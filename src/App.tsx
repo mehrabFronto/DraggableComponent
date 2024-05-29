@@ -2,6 +2,7 @@ import { Fragment, ReactNode, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { buttons } from './constants/buttons';
 import { ElementTypes } from './types/ElementTypes';
+import DraggableComponent from './components/DraggableComponent';
 
 type StateType = { id: string; element: ReactNode }[];
 
@@ -15,11 +16,13 @@ const reducer = (state: StateType, action: { type: ElementTypes }) => {
         {
           id: uuidv4(),
           element: (
-            <img
-              className="absolute w-full h-full object-cover rounded-xl"
-              src="https://wallpaperwaifu.com/wp-content/uploads/2023/05/bmw-m4-in-the-winter-thumb.jpg"
-              alt="Car"
-            />
+            <DraggableComponent>
+              <img
+                className="object-cover rounded-xl w-52 h-52"
+                src="https://wallpaperwaifu.com/wp-content/uploads/2023/05/bmw-m4-in-the-winter-thumb.jpg"
+                alt="Car"
+              />
+            </DraggableComponent>
           ),
         },
       ];
@@ -30,15 +33,17 @@ const reducer = (state: StateType, action: { type: ElementTypes }) => {
         {
           id: uuidv4(),
           element: (
-            <video
-              className="absolute w-full h-full object-cover rounded-xl"
-              controls
-              autoPlay>
-              <source
-                src="https://persian13.cdn.asset.aparat.com/aparat-video/b16e1a13f7e86e9d432b121bd34fcdfe58539397-720p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjVkZTc2OGFjZjEwM2NjYTJmZjUzYmE1OWExN2YxNjA3IiwiZXhwIjoxNzE2ODU0OTYxLCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.oU1YM8msfqfkmuvB6F-wJsFvg9o69mJKMkfdJrrNyUA"
-                type="video/mp4"
-              />
-            </video>
+            <DraggableComponent>
+              <video
+                className="object-cover rounded-xl w-52 h-52"
+                controls
+                autoPlay>
+                <source
+                  src="https://persian13.cdn.asset.aparat.com/aparat-video/b16e1a13f7e86e9d432b121bd34fcdfe58539397-720p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjVkZTc2OGFjZjEwM2NjYTJmZjUzYmE1OWExN2YxNjA3IiwiZXhwIjoxNzE2ODU0OTYxLCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.oU1YM8msfqfkmuvB6F-wJsFvg9o69mJKMkfdJrrNyUA"
+                  type="video/mp4"
+                />
+              </video>
+            </DraggableComponent>
           ),
         },
       ];
@@ -49,9 +54,11 @@ const reducer = (state: StateType, action: { type: ElementTypes }) => {
         {
           id: uuidv4(),
           element: (
-            <p className="absolute text-white font-medium text-3xl">
-              Paragraph has been added
-            </p>
+            <DraggableComponent>
+              <p className="text-white font-medium text-3xl whitespace-nowrap">
+                Paragraph has been added
+              </p>
+            </DraggableComponent>
           ),
         },
       ];
@@ -61,7 +68,7 @@ const reducer = (state: StateType, action: { type: ElementTypes }) => {
   }
 };
 
-function App() {
+const App = () => {
   const [addedElements, dispatch] = useReducer(reducer, initialState);
 
   return (
@@ -69,7 +76,7 @@ function App() {
       <div className="container max-w-screen-lg mx-auto grid grid-cols-3 gap-x-8 h-[500px]">
         {/* Added Elements */}
         <div className="col-span-2 border-2 border-dashed border-blue-500 rounded-xl p-4">
-          <div className="flex items-center justify-center h-full relative">
+          <div className="flex items-center justify-center h-full relative overflow-hidden">
             {addedElements.length > 0 ? (
               addedElements.map(({ id, element }) => (
                 <Fragment key={id}>{element}</Fragment>
@@ -81,7 +88,7 @@ function App() {
         </div>
 
         {/* Buttons */}
-        <div className="flex flex-col col-span-1 gap-y-8">
+        <div className="flex flex-col col-span-1 gap-y-8 select-none">
           {buttons.map((btn) => (
             <button
               key={btn.id}
@@ -94,6 +101,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
