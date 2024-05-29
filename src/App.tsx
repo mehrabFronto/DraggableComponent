@@ -39,7 +39,7 @@ const reducer = (state: StateType, action: { type: ElementTypes }) => {
                 controls
                 autoPlay>
                 <source
-                  src="https://persian13.cdn.asset.aparat.com/aparat-video/b16e1a13f7e86e9d432b121bd34fcdfe58539397-720p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjVkZTc2OGFjZjEwM2NjYTJmZjUzYmE1OWExN2YxNjA3IiwiZXhwIjoxNzE2ODU0OTYxLCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.oU1YM8msfqfkmuvB6F-wJsFvg9o69mJKMkfdJrrNyUA"
+                  src="https://caspian11.cdn.asset.aparat.com/aparat-video/b16e1a13f7e86e9d432b121bd34fcdfe58539397-720p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjM0YWFmZGRmNmE5Y2FkODA5MzNjOGU3MWMwNjIwYTFkIiwiZXhwIjoxNzE3MDAyMTEwLCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.O2KsJU_ApjqHYeP6-6YzPmYkul9P_2vQTmn6xWxf-zA"
                   type="video/mp4"
                 />
               </video>
